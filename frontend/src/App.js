@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Button } from 'react-bootstrap';
 import { HiLink } from 'react-icons/hi2'
 import { ImCancelCircle } from "react-icons/im";
@@ -9,6 +9,7 @@ function App() {
   const [shortUrl, setShortUrl] = useState('')
   const [allUrls, setAllUrls] = useState([])
   const [alert, setAlert] = useState('')
+  const inputRef = useRef(null);
 
   useEffect(() => {
     if (alert) {
@@ -56,6 +57,10 @@ function App() {
       .then((response) => {
         setShortUrl(response.data)
         setLongUrl('')
+
+        if (inputRef.current) {
+          inputRef.current.value = '';
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -102,6 +107,7 @@ function App() {
           onChange={(e) => setLongUrl(e.target.value)}
           placeholder='Paste your link here'
           className='inputStyle'
+          ref={inputRef}
         />
         <Button className='buttonStyle'
           onMouseEnter={handleMouseEnter}
@@ -109,23 +115,6 @@ function App() {
           onClick={() => handleButtonClicked()}>
           Shorten it!
         </Button>
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-        {shortUrl === ''
-          ? ''
-          :
-          <>
-            <p style={{ fontSize: '16px', marginRight: '10px' }}>Your shorten URL: </p>
-            <HiLink style={{ marginRight: '1px' }} />
-            <a
-              href={shortUrl}
-              target="_blank"
-              rel="noreferrer"
-              style={{ textDecoration: 'none', color: 'blue' }}
-            >{shortUrl}
-            </a>
-          </>
-        }
       </div>
       {sortedUrls.length !== 0 &&
         <div style={{ marginTop: '5%', display: 'flex', justifyContent: 'center' }}>
