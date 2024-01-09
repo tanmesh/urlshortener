@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  /* font-family: 'Roboto', sans-serif; */
+
+  @media (max-width: 800px) {
+    font-size: 1.5rem;
+  }
+}
+
+.buttonStyle {
+  width: 100px;
+  height: 40px;
+  border-radius: 5px; /* Corrected 'rpx' to '5px' */
+  border: 1px solid #ccc;
+  outline: none;
+  padding: 0 10px;
+  margin-left: 10px; /* Changed to lowercase for consistency */
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.cancelButtonStyle {
+  cursor: pointer;
+  font-size: 20px;
+  color: red;
+  transition: color 0.4s; /* Adding transition to color change */
+}
+
+.cancelButtonStyle:hover {
+  color: black; /* Changing color on hover */
+}
+
+
+.inputStyle {
+  width: 400px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  padding: 0 10px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+

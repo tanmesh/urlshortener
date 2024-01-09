@@ -1,0 +1,9 @@
+#database:
+#    driverClass: org.postgresql.jdbc.Driver
+#    user: tinyurl
+#    url: jdbc:postgresql//localhost:5433/tinyurl
+
+mongoDbConfig:
+  dbName: tinyurl
+  host: localhost
+  port: 27017
