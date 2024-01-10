@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Button } from 'react-bootstrap';
-import { HiLink } from 'react-icons/hi2'
 import { ImCancelCircle } from "react-icons/im";
 import axios from 'axios';
 
@@ -21,23 +20,23 @@ function App() {
     }
   }, [alert]);
 
-  useEffect(() => {
+  const fetchData = () => {
     const config = {
       headers: {
         'Content-Type': 'application/json',
       },
     };
 
-    const fetchData = () => {
-      axios.get(`http://localhost:8080/tinyurl/getAll`, config)
-        .then((response) => {
-          setAllUrls(response.data);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-    };
+    axios.get(`http://localhost:8080/tinyurl/getAll`, config)
+      .then((response) => {
+        setAllUrls(response.data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
+  useEffect(() => {
     fetchData();
   }, [shortUrl]);
 
@@ -68,6 +67,10 @@ function App() {
   }
 
   const handleDelete = (url) => {
+    console.log(allUrls)
+    setAllUrls(allUrls.filter((url_) => url_.shortUrl !== url))
+    console.log(allUrls)
+
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -77,6 +80,7 @@ function App() {
     axios.delete(`${url}`, config)
       .then((response) => {
         setShortUrl('')
+
       })
       .catch((error) => {
         console.error("Error:", error);
