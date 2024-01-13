@@ -1,4 +1,3 @@
-
 # This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
 
@@ -16,7 +15,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  backend-job:
+  build:
 
     runs-on: self-hosted
 
@@ -28,27 +27,5 @@ jobs:
         java-version: '18'
         distribution: 'oracle'
         cache: maven
-    - name: Backend Job
+    - name: Build with Maven
       run: cd backend && mvn -B package --file pom.xml
-  
-  frontend-job:
-
-    runs-on: self-hosted
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-        cache-dependency-path: frontend/package-lock.json
-    - run: cd frontend && npm ci
-    - run: pwd
-    - run: cd frontend && npm run build --if-present
-    - run: cd frontend && npm run build
