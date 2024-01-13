@@ -12,9 +12,7 @@ on:
 jobs:
   build:
 
-    runs-on: self-hosted
-    container:
-      image: frontend
+    runs-on: [self-hosted, frontend]
 
     strategy:
       matrix:
