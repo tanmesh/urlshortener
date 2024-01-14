@@ -28,14 +28,14 @@ jobs:
         java-version: '18'
         distribution: 'oracle'
         cache: maven
-    - name: Backend Job
-      run: cd backend && mvn clean install 
     - name: Upload target folder
       uses: actions/upload-artifact@v2
       with:
         name: target
         path: |
           ${{ github.workspace }}/backend/target
+    - name: Backend Job
+      run: cd backend && mvn clean install 
   
   frontend-job:
 
@@ -56,5 +56,4 @@ jobs:
         cache-dependency-path: frontend/package-lock.json
     - run: cd frontend && rm -rf node_modules && rm -rf package-lock.json
     - run: cd frontend && npm i . 
-    - run: cd frontend && npm run build --if-present
-    - run: cd frontend && npm run build
+    - run: cd frontend && npm start
