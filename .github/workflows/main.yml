@@ -29,8 +29,8 @@ jobs:
         distribution: 'oracle'
         cache: maven
     - name: Backend Job
-      run: cd backend && mvn -B package --file pom.xml
-      run: cd backend && mvn clean install
+    - run: cd backend && mvn -B package --file pom.xml
+    - run: cd backend && mvn clean install 
   
   frontend-job:
 
