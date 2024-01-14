@@ -30,6 +30,12 @@ jobs:
         cache: maven
     - name: Backend Job
       run: cd backend && mvn clean install 
+    - name: Upload target folder
+      uses: actions/upload-artifact@v2
+      with:
+        name: target
+        path: |
+          ${{ github.workspace }}/backend/target
   
   frontend-job:
 
