@@ -38,7 +38,7 @@ jobs:
     - name: Backend Job
       run: cd backend && mvn clean install 
     - name: Restart backend
-      run: pm2 restart backend
+      run: npm install pm2 && pm2 restart backend
     
   
   frontend-job:
@@ -71,5 +71,5 @@ jobs:
         cd frontend && npm run build
         ls -la # Check the contents after running npm install and npm run build
     - name: Restart frontend
-      run: pm2 start frontend
+      run: npm install pm2 && pm2 start frontend
 
