@@ -61,7 +61,7 @@ jobs:
     - name: Install dependencies
       run: cd frontend && npm ci
     - name: Run npm audit fix
-      run: cd frontend && npm audit fix --force
+      run: cd frontend && npm audit fix
     - name: Debug
       run: |
         ls -la # Check the contents of the current directory
