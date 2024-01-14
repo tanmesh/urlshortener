@@ -59,7 +59,7 @@ jobs:
     - name: Clear npm cache
       run: npm cache clean --force
     - name: Install dependencies
-      run: cd frontend && npm ci
+      run: cd frontend && npm install
     - name: Run npm audit fix
       run: cd frontend && npm audit fix
     - name: Debug
