@@ -42,7 +42,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
+    - run : fallocate -l 4G /swapfile
+    - run : chmod 600 /swapfile
+    - run : mkswap  /swapfile
+    - run : swapon /swapfile
+    - run : swapon  --show
+    - run : free -h
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
