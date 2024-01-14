@@ -10,7 +10,10 @@ function App() {
   const [alert, setAlert] = useState('')
   const inputRef = useRef(null);
 
+  const baseUrl = process.env.REACT_APP_BASE_URL;
+
   useEffect(() => {
+    console.log(baseUrl)
     if (alert) {
       const timeout = setTimeout(() => {
         setAlert('');
@@ -27,7 +30,7 @@ function App() {
       },
     };
 
-    axios.get(`http://localhost:8080/tinyurl/getAll`, config)
+    axios.get(`${baseUrl}/tinyurl/getAll`, config)
       .then((response) => {
         setAllUrls(response.data);
       })
@@ -52,7 +55,7 @@ function App() {
       },
     };
 
-    axios.post(`http://localhost:8080/tinyurl/`, { 'longUrl': longUrl }, config)
+    axios.post(`${baseUrl}/tinyurl/`, { 'longUrl': longUrl }, config)
       .then((response) => {
         setShortUrl(response.data)
         setLongUrl('')
