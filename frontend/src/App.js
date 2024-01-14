@@ -21,6 +21,7 @@ function App() {
 
       return () => clearTimeout(timeout);
     }
+    // eslint-disable-next-line
   }, [alert]);
 
   const fetchData = () => {
@@ -41,6 +42,7 @@ function App() {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line
   }, [shortUrl]);
 
   const handleButtonClicked = () => {
