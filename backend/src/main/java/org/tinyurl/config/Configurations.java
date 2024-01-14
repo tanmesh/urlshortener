@@ -15,6 +15,13 @@ public class Configurations extends Configuration {
         return mongoDbConfig;
     }
 
+    @JsonProperty
+    private String baseUrl;
+
+    public String getBaseUrl() {
+        return baseUrl;
+    }
+
 //    /**
 //     * A factory used to connect to a relational database management system.
 //     * Factories are used by Dropwizard to group together related configuration

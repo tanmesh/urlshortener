@@ -45,12 +45,14 @@ public class Main extends Application<Configurations> {
     public void run(Configurations configurations, Environment environment) {
         Datastore ds = MongoUtils.createDatastore(configurations.getMongoDBConfig());
 
+        String baseUrl = configurations.getBaseUrl();
+
         TinyurlDAO tinyurlDAO = new TinyurlDAO(ds);
 //        TinyurlDAO tinyurlDAO = new TinyurlDAO(hibernate.getSessionFactory());
 
-        ITinyurlService tinyurlService = new TinyurlService(tinyurlDAO);
+        ITinyurlService tinyurlService = new TinyurlService(baseUrl, tinyurlDAO);
 
-        TinyurlResource tinyurlResource = new TinyurlResource(tinyurlService);
+        TinyurlResource tinyurlResource = new TinyurlResource(baseUrl, tinyurlService);
         environment.jersey().register(tinyurlResource);
         configureCors(environment);
     }

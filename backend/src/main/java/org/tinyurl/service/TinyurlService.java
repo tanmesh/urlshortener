@@ -14,8 +14,10 @@ import java.util.stream.Collectors;
 public class TinyurlService implements ITinyurlService {
     private UrlShortener urlShortener;
     private TinyurlDAO tinyurlDAO;
+    private String baseUrl;
 
-    public TinyurlService(TinyurlDAO tinyurlDAO) {
+    public TinyurlService(String baseUrl, TinyurlDAO tinyurlDAO) {
+        this.baseUrl = baseUrl;
         this.tinyurlDAO = tinyurlDAO;
         this.urlShortener = new UrlShortener();
     }
@@ -45,7 +47,7 @@ public class TinyurlService implements ITinyurlService {
         } catch (Exception e) {
             throw new Exception("Error generating alias: " + e.getMessage());
         }
-        return "http://localhost:8080/tinyurl/" + alias;
+        return baseUrl + alias;
     }
 
     @Override
