@@ -61,6 +61,8 @@ jobs:
       run: npm cache clean --force
     - name: Install dependencies
       run: cd frontend && npm ci
+    - name: Run npm audit fix
+      run: npm audit fix --force
     - name: Debug
       run: |
         ls -la # Check the contents of the current directory
