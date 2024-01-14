@@ -36,7 +36,6 @@ jobs:
           ${{ github.workspace }}/backend/target
     - name: Backend Job
       run: cd backend && mvn clean install 
-    - run: pm2 restart backend
     
   
   frontend-job:
@@ -59,4 +58,3 @@ jobs:
         nvm install v20.7.0
         nvm use v20.7.0
     - run: cd frontend && npm run build
-    - run: cd frontend && 
