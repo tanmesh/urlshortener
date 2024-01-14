@@ -36,7 +36,8 @@ jobs:
           ${{ github.workspace }}/backend/target
     - name: Backend Job
       run: cd backend && mvn clean install 
-      run: cd backend && pm2 restart backend
+    - run: pm2 restart backend
+    
   
   frontend-job:
 
