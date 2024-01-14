@@ -57,4 +57,5 @@ jobs:
         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
         nvm install v20.7.0
         nvm use v20.7.0
+    - run: cd frontend && npm install
     - run: cd frontend && npm run build
