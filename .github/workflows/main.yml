@@ -22,6 +22,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - run: rm -rf /root/.m2
     - name: Set up JDK 18
       uses: actions/setup-java@v3
       with:
@@ -36,6 +37,8 @@ jobs:
           ${{ github.workspace }}/backend/target
     - name: Backend Job
       run: cd backend && mvn clean install 
+    - name: Restart backend
+      run: pm2 start backend
     
   
   frontend-job:
@@ -67,4 +70,6 @@ jobs:
         ls -la # Check the contents of the current directory
         cd frontend && npm run build
         ls -la # Check the contents after running npm install and npm run build
+    - name: Restart frontend
+      run: pm2 start frontend
 
