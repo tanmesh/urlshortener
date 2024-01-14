@@ -11,9 +11,11 @@ import java.util.List;
 
 @Path("/tinyurl")
 public class TinyurlResource {
-    ITinyurlService tinyurlService;
+    private ITinyurlService tinyurlService;
+    private String baseUrl;
 
-    public TinyurlResource(ITinyurlService tinyurlService) {
+    public TinyurlResource(String baseUrl, ITinyurlService tinyurlService) {
+        this.baseUrl = baseUrl;
         this.tinyurlService = tinyurlService;
     }
 
@@ -38,7 +40,7 @@ public class TinyurlResource {
     public Response get(@PathParam("alias") String alias) {
         String longUrl;
         try {
-            String shortUrl = "http://localhost:8080/tinyurl/" + alias;
+            String shortUrl = baseUrl + alias;
             longUrl = tinyurlService.get(shortUrl);
         } catch (Exception e) {
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
@@ -52,7 +54,7 @@ public class TinyurlResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("alias") String alias) {
         try {
-            String shortUrl = "http://localhost:8080/tinyurl/" + alias;
+            String shortUrl = baseUrl + alias;
             tinyurlService.deleteUrl(shortUrl);
         } catch (Exception e) {
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
