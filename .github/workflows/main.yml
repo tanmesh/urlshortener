@@ -38,7 +38,7 @@ jobs:
     - name: Backend Job
       run: cd backend && mvn clean install 
     - name: Restart backend
-      run: ./node_modules/.bin/pm2 start backend
+      run: java  -jar ./target/backend-1.0-SNAPSHOT.jar server ./src/main/resources/tinyurl.config.prod.yaml
     
   
   frontend-job:
