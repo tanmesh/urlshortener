@@ -21,8 +21,6 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    - name: Debug Environment
-      run: env
     - uses: actions/checkout@v3
     - run: rm -rf /root/.m2
     - name: Set up JDK 18
@@ -40,7 +38,7 @@ jobs:
     - name: Backend Job
       run: cd backend && mvn clean install 
     - name: Restart backend
-      run: npm install pm2 && pm2 restart backend
+      run: /root/.nvm/versions/node/v20.7.0/bin/pm2 restart backend
     
   
   frontend-job:
@@ -53,7 +51,7 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v3x
     - name: Set up Node.js
       run: |
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
@@ -65,13 +63,11 @@ jobs:
       run: npm cache clean --force
     - name: Install dependencies
       run: cd frontend && npm install
-    # - name: Run npm audit fix
-    #   run: cd frontend && npm audit fix
     - name: Debug
       run: |
         ls -la # Check the contents of the current directory
         cd frontend && npm run build
         ls -la # Check the contents after running npm install and npm run build
     - name: Restart frontend
-      run: npm install pm2 && pm2 start frontend
+      run: /root/.nvm/versions/node/v20.7.0/bin/pm2 start frontend
 
