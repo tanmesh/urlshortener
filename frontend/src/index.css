@@ -7,6 +7,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 14px; /* Smaller font size for screens smaller than 600px */
+  }
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -15,7 +21,6 @@ code {
 .title {
   font-size: 2rem;
   font-weight: bold;
-  /* font-family: 'Roboto', sans-serif; */
 
   @media (max-width: 800px) {
     font-size: 1.5rem;
@@ -28,8 +33,6 @@ code {
   border-radius: 5px; /* Corrected 'rpx' to '5px' */
   border: 1px solid #ccc;
   outline: none;
-  padding: 0 10px;
-  margin-left: 10px; /* Changed to lowercase for consistency */
   font-size: 16px;
   transition: background-color 0.3s;
 }
@@ -45,15 +48,43 @@ code {
   color: black; /* Changing color on hover */
 }
 
-
 .inputStyle {
-  width: 400px;
+  width: 90%;
   height: 40px;
   border-radius: 5px;
   border: 1px solid #ccc;
   outline: none;
-  padding: 0 10px;
+  padding: 0 20px;
   font-size: 16px;
-  margin-right: 10px;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 20px;
+  background-color: #fff; /* Set your preferred background color */
+  border-radius: 8px; /* Apply border-radius for rounded corners */
+}
+
+.shortUrlStyle {
+  text-decoration: none; 
+  color: blue;
+}
+
+.shortUrlStyle:hover {
+  text-decoration: underline; 
+  color: blue;
+}
+
+.tableStyle {
+  border-collapse: collapse;
+  width: auto;
+  word-break: break-all ;
+}
+
+.tableCell {
+  padding: '8px';
+  textAlign: 'left';
+  wordWrap: 'break-word';
 }
 
