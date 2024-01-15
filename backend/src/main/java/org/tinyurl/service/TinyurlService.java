@@ -1,15 +1,14 @@
 package org.tinyurl.service;
 
-import org.bson.types.ObjectId;
 import org.tinyurl.dao.TinyurlDAO;
 import org.tinyurl.entity.Tinyurl;
 import org.tinyurl.response.TinyurlData;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.net.URL;
 
 public class TinyurlService implements ITinyurlService {
     private UrlShortener urlShortener;
@@ -24,6 +23,10 @@ public class TinyurlService implements ITinyurlService {
 
     @Override
     public String shorten(String longUrl) throws Exception {
+        if (!isValidUrl(longUrl)) {
+            throw new IllegalArgumentException("Invalid URL");
+        }
+
         Tinyurl tinyurl = tinyurlDAO.getShortUrl(longUrl);
         if (tinyurl != null) {
             return tinyurl.getShortUrl();
@@ -38,6 +41,15 @@ public class TinyurlService implements ITinyurlService {
         tinyurlDAO.save(tinyurl);
 
         return shortenUrl;
+    }
+
+    private boolean isValidUrl(String url) {
+        try {
+            new URL(url).toURI();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     private String getShortenUrl(String longUrl) throws Exception {
