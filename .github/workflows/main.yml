@@ -21,6 +21,8 @@ jobs:
     runs-on: self-hosted
 
     steps:
+    - name: Debug Environment
+      run: env
     - uses: actions/checkout@v3
     - run: rm -rf /root/.m2
     - name: Set up JDK 18
