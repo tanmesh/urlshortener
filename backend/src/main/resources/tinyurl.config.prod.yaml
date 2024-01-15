@@ -8,4 +8,4 @@ mongoDbConfig:
   host: localhost
   port: 27017
 
-baseUrl: "http://45.79.103.178:8080/tinyurl/"
+baseUrl: "http://173.255.209.79:8080/tinyurl/"
