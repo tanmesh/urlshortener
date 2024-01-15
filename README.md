@@ -6,7 +6,7 @@ The goal of this project is to create a URL shortening service that allows users
 ## Demo 
 Incase the URL is not working, here is a recorded demo.
 
-
+https://github.com/tanmesh/urlshortener/assets/20218124/387a73ce-2e94-4817-aeb8-80b11aea215b
 
 ## Project Setup
 - **Project Structure**: The project is organized in two separate directories -- one for backend and, other one for frontend. Their name are self-explanatory. 
