@@ -31,6 +31,8 @@ jobs:
         cache: maven
     - name: Backend Job
       run: cd backend && mvn clean install 
+    - name: Display target folder
+      run: ls -R backend/target
     - name: Restart backend
       run: /root/.nvm/versions/node/v20.7.0/bin/pm2 restart backend
     
