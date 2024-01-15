@@ -3,7 +3,7 @@ module.exports = {
       {
         name: 'frontend',
         script: 'serve',
-        args: ['-s', 'build'],
+        args: ['-s', 'build', '-l', '3000'],
       },
     ],
   };
