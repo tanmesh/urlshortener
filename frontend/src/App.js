@@ -106,11 +106,11 @@ function App() {
   });
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+    <div className='container'>
       <h3 className='title'>
         URL Shortener
       </h3>
-      <div>
+      <div className='inputContainer'>
         {alert && <p style={{ color: 'red', fontWeight: 'bold' }}>{alert}</p>}
         <input
           type='text'
@@ -119,34 +119,43 @@ function App() {
           className='inputStyle'
           ref={inputRef}
         />
-        <Button className='buttonStyle'
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onClick={() => handleButtonClicked()}>
-          Shorten it!
-        </Button>
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', marginTop: '10px' }}>
+          <Button className='buttonStyle'
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onClick={() => handleButtonClicked()}>
+            Shorten it!
+          </Button>
+        </div>
       </div>
       {sortedUrls.length !== 0 &&
-        <div style={{ marginTop: '5%', display: 'flex', justifyContent: 'center' }}>
-          <table style={{ borderCollapse: 'collapse', width: '90%', tableLayout: 'auto', margin: '0 auto' }}>
+        <div style={{ marginTop: '5%' }}>
+          <table className="tableStyle">
             <thead>
               <tr style={{ backgroundColor: 'lightgrey' }}>
-                <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Long URL</th>
-                <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Short URL</th>
-                <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Creation Time</th>
+                <th className="tableCell">Long URL</th>
+                <th className="tableCell">Short URL</th>
+                <th className="tableCell">Creation Time</th>
               </tr>
             </thead>
             <tbody>
               {sortedUrls.map((url) => (
                 <tr key={url.id}>
-                  <td style={{ padding: '8px', textAlign: 'left', wordWrap: 'break-word' }}>{url.longUrl}</td>
+                  <td style={{ padding: '8px', textAlign: 'left', wordWrap: 'break-word' }}>
+                    <a
+                      href={url.longUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className='shortUrlStyle'>
+                      {url.longUrl}
+                    </a>
+                  </td>
                   <td style={{ padding: '8px', textAlign: 'left', wordWrap: 'break-word' }}>
                     <a
                       href={url.shortUrl}
                       target="_blank"
                       rel="noreferrer"
-                      style={{ textDecoration: 'none', color: 'blue' }}
-                    >
+                      className='shortUrlStyle'>
                       {url.shortUrl}
                     </a>
                   </td>
