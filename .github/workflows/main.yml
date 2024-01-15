@@ -41,7 +41,6 @@ jobs:
     - name: Restart backend
       run: /root/.nvm/versions/node/v20.7.0/bin/pm2 restart backend
 
-    - uses: actions/checkout@v3
     - name: Set up Node.js
       run: |
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
