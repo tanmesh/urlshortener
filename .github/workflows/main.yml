@@ -39,7 +39,7 @@ jobs:
     - name: Display target folder
       run: ls -R backend/target
     - name: Restart backend
-      run: /root/.nvm/versions/node/v20.7.0/bin/pm2 restart backend 
+      run: pm2 restart backend 
 
     - name: Set up Node.js
       run: |
@@ -58,6 +58,6 @@ jobs:
         cd frontend && npm run build
         ls -la # Check the contents after running npm install and npm run build
     - name: Restart frontend
-      run: /root/.nvm/versions/node/v20.7.0/bin/pm2 start frontend 
+      run: pm2 start frontend 
       
 
