@@ -58,6 +58,6 @@ jobs:
         cd frontend && npm run build
         ls -la # Check the contents after running npm install and npm run build
     - name: Restart frontend
-      run: /root/.nvm/versions/node/v20.7.0/bin/pm2 start frontend
+      run: /root/.nvm/versions/node/v20.7.0/bin/pm2 start frontend 
       
 
