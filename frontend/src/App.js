@@ -67,6 +67,7 @@ function App() {
         }
       })
       .catch((error) => {
+        setAlert(error.response.data)
         console.error("Error:", error);
       });
   }
@@ -110,7 +111,7 @@ function App() {
         URL Shortener
       </h3>
       <div>
-        {alert && <p style={{ color: 'red' }}>{alert}</p>}
+        {alert && <p style={{ color: 'red', fontWeight: 'bold' }}>{alert}</p>}
         <input
           type='text'
           onChange={(e) => setLongUrl(e.target.value)}
