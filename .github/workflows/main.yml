@@ -22,19 +22,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - run: rm -rf /root/.m2
+    - run: rm -rf ~/.m2
     - name: Set up JDK 18
       uses: actions/setup-java@v3
       with:
         java-version: '18'
         distribution: 'oracle'
         cache: maven
-    - name: Upload target folder
-      uses: actions/upload-artifact@v2
-      with:
-        name: target
-        path: |
-          ${{ github.workspace }}/backend/target
     - name: Backend Job
       run: cd backend && mvn clean install 
     - name: Restart backend
