@@ -129,7 +129,7 @@ function App() {
         </div>
       </div>
       {sortedUrls.length !== 0 &&
-        <div style={{ marginTop: '5%' }}>
+        <div style={{ marginTop: '5%', display: 'flex', flex: 'row', justifyContent: 'center', alignContent: 'center' }}>
           <table className="tableStyle">
             <thead>
               <tr style={{ backgroundColor: 'lightgrey' }}>
