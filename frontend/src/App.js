@@ -31,7 +31,7 @@ function App() {
       },
     };
 
-    axios.get(`${baseUrl}/tinyurl/getAll`, config)
+    axios.get(`${baseUrl}/getAll`, config)
       .then((response) => {
         setAllUrls(response.data);
       })
@@ -57,7 +57,7 @@ function App() {
       },
     };
 
-    axios.post(`${baseUrl}/tinyurl/`, { 'longUrl': longUrl }, config)
+    axios.post(`${baseUrl}/`, { 'longUrl': longUrl }, config)
       .then((response) => {
         setShortUrl(response.data)
         setLongUrl('')
